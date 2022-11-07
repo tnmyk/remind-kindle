@@ -15,6 +15,11 @@ jobs:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
+        env:
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_APP_PASSWORD: ${{ secrets.SENDER_APP_PASSWORD }}
+          RECEIVING_EMAIL: ${{ secrets.RECEIVING_EMAIL }}
+          
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm run dev
