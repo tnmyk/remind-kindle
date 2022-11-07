@@ -13,9 +13,11 @@ export const highlightsParser = async (
       const splitAndRemoveEmptyLines = ele
         .split("\r\n")
         .filter((f) => f.length > 0);
+
       if (splitAndRemoveEmptyLines.length != 3) {
         return null;
       }
+
       const highlightObj = {
         bookTitle: splitAndRemoveEmptyLines[0]!,
         content: splitAndRemoveEmptyLines[2]!,
@@ -29,4 +31,10 @@ export const highlightsParser = async (
   return filteredHighlights;
 };
 
-export const randomHighlights = (highlights: object[]) => {};
+export const randomHighlightsSlice = (highlights: object[], amount: number) => {
+  let slice = highlights
+    .sort(() => 0.5 - Math.random())
+    .slice(Math.min(amount, highlights.length));
+
+  return slice;
+};

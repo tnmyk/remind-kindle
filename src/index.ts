@@ -1,7 +1,9 @@
-import { highlightsParser } from "./utils"
+import { highlightsParser, randomHighlightsSlice } from "./utils";
 
-const run = async ()=>{
-    await highlightsParser("./src/test/My Clippings.txt");
-}
+const run = async () => {
+  const allHighlights = await highlightsParser("./src/test/My Clippings.txt");
+  const randomSlice = randomHighlightsSlice(allHighlights, 1);
+  
+};
 
 run();
