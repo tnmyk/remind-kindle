@@ -1,0 +1,33 @@
+name: Daily Email
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: '* * * * *'
+
+jobs:
+  email:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Node LTS versions
+        uses: actions/setup-node@v3
+        env:
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_APP_PASSWORD: ${{ secrets.SENDER_APP_PASSWORD }}
+          RECEIVING_EMAIL: ${{ secrets.RECEIVING_EMAIL }}
+          
+        with:
+          node-version: ${{ matrix.node-version }}
+          
+      - name: Install Node.js dependencies
+        run: |
+          npm i -g pnpm
+          pnpm i
+        
+      - run: npm run dev
