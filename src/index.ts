@@ -4,4 +4,4 @@ const run = async ()=>{
     await highlightsParser("./src/test/My Clippings.txt");
 }
 
-run()
+run();
