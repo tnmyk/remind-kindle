@@ -17,10 +17,6 @@ jobs:
       
       - name: Node LTS versions
         uses: actions/setup-node@v3
-        env:
-          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
-          SENDER_APP_PASSWORD: ${{ secrets.SENDER_APP_PASSWORD }}
-          RECEIVING_EMAIL: ${{ secrets.RECEIVING_EMAIL }}
           
         with:
           node-version: ${{ matrix.node-version }}
@@ -30,4 +26,8 @@ jobs:
           npm i -g pnpm
           pnpm i
         
-      - run: npm run dev
+      - env:
+            SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+            SENDER_APP_PASSWORD: ${{ secrets.SENDER_APP_PASSWORD }}
+            RECEIVING_EMAIL: ${{ secrets.RECEIVING_EMAIL }}
+        run: npm run dev
