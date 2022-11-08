@@ -19,6 +19,8 @@ Get reminder emails of your favorite kindle highlights *without sharing them wit
 - Change the email frequency.
 - Change number of highlights in the emails.
  
+## Email Screenshot
+<img width="405" alt="image" src="https://user-images.githubusercontent.com/73903781/200693278-b84c6d7a-d3e3-4db5-9023-4c0473dc753b.png">
 
 ## Contributing
 
