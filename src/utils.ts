@@ -13,6 +13,8 @@ export const highlightsParser = async (
     .map((ele) => {
       const splitAndRemoveEmptyLines = ele
         .split("\r\n")
+        .join("\n")
+        .split("\n")
         .filter((f) => f.length > 0);
 
       if (splitAndRemoveEmptyLines.length != 3) {
