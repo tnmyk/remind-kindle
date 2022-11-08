@@ -2,6 +2,7 @@ import { PathLike } from "fs";
 import { readFile } from "fs/promises";
 import { Highlight } from "./types";
 import nodemailer from "nodemailer";
+import { RECEIVING_EMAIL, SENDER_APP_PASSWORD, SENDER_EMAIL } from "./env";
 
 export const highlightsParser = async (
   path: PathLike
@@ -49,13 +50,13 @@ export const email = async (highlights: Highlight[]) => {
   let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env["SENDER_EMAIL"], // generated ethereal user
-      pass: process.env["SENDER_APP_PASSWORD"], // generated ethereal password
+      user: SENDER_EMAIL, // generated ethereal user
+      pass: SENDER_APP_PASSWORD, // generated ethereal password
     },
   });
 
   let info = await transporter.sendMail({
-    to: process.env["RECEIVING_EMAIL"], // list of receivers
+    to: RECEIVING_EMAIL, // list of receivers
     subject: "📔🔖 Kindle Highlights", // Subject line
     html: generateHTML(highlights), // html body
   });

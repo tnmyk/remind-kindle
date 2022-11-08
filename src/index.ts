@@ -1,12 +1,11 @@
 import { email, highlightsParser, randomHighlightsSlice } from "./utils";
-import { config } from "dotenv";
-import path from 'path'
-config();
+import path from "path";
+import { NO_OF_HIGHLIGHTS } from "./env";
 
 const run = async () => {
-  const clippingsPath  = path.join("src", "test","My Clippings.txt");
+  const clippingsPath = path.join("src", "test", "My Clippings.txt");
   const allHighlights = await highlightsParser(clippingsPath);
-  const randomSlice = randomHighlightsSlice(allHighlights, Number(process.env['NO_OF_HIGHLIGHTS']));
+  const randomSlice = randomHighlightsSlice(allHighlights, NO_OF_HIGHLIGHTS);
 
   await email(randomSlice);
 };
