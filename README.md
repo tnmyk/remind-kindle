@@ -3,12 +3,12 @@ Remind Kindle
 <img src="logo.svg" height="24px" />
 </h1>
 
-Get reminder emails of your favorite kindle highlights 📔🔖
+Get reminder emails of your favorite kindle highlights *without sharing them with others* 📔🔖
 
 
 ## Installation
 
-1. Fork the repo. 
+1. Fork/Clone the repo. 
 2. Replace `My Clippings.txt` with your own and commit and push the changes.
 3. Enable Github Actions.
 4. Enable 2-Step Verification on the Gmail account and generate a new app password for mail.
