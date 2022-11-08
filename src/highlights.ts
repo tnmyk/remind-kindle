@@ -2,31 +2,36 @@ import { PathLike } from "fs";
 import { readFile } from "fs/promises";
 import { Highlight } from "./types";
 
+const generateHighlightObject = (highlightData: string[]): Highlight => {
+  return {
+    bookTitle: highlightData[0]!,
+    content: highlightData[2]!,
+    details: highlightData[1]?.slice(2)!, // removes '- ' from the beginning.
+  };
+};
+
 export const highlightsParser = async (
   path: PathLike
 ): Promise<Highlight[]> => {
   const content = await readFile(path, "utf-8");
-  const arr = content.split("==========");
+  const highlightsTexts = content.split("==========");
 
-  const filteredHighlights: Highlight[] = arr
-    .map((ele) => {
-      const splitAndRemoveEmptyLines = ele
+  const filteredHighlights: Highlight[] = highlightsTexts
+    .map((highlightText) => {
+      // [bookTitle, details, content]
+      const highlightData: string[] = highlightText
         .split("\r\n")
-        .join("\n")
+        .join("\n") // To replace all `\r\n` with `\n`. Issue with ubuntu vs win
         .split("\n")
         .filter((f) => f.length > 0);
 
-      if (splitAndRemoveEmptyLines.length != 3) {
+      if (highlightData.length != 3) {
         return null;
       }
 
-      const highlightObj = {
-        bookTitle: splitAndRemoveEmptyLines[0]!,
-        content: splitAndRemoveEmptyLines[2]!,
-        details: splitAndRemoveEmptyLines[1]?.slice(2)!,
-      };
+      const highlight: Highlight = generateHighlightObject(highlightData);
 
-      return highlightObj;
+      return highlight;
     })
     .filter(Boolean) as Highlight[];
 
@@ -43,4 +48,3 @@ export const randomHighlightsSlice = (
 
   return slice;
 };
-
