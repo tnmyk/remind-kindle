@@ -4,7 +4,7 @@ import { email } from "./mail";
 import { highlightsParser, randomHighlightsSlice } from "./highlights";
 
 const run = async () => {
-  const clippingsPath = path.join("src", "test", "My Clippings.txt");
+  const clippingsPath = path.join("My Clippings.txt");
 
   const allHighlights = await highlightsParser(clippingsPath);
 
