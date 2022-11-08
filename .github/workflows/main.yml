@@ -3,8 +3,9 @@ name: Daily Email
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: '* * * * *'
-
+#   Runs every second hour.
+    - cron: '* */2 * * *'
+  
 jobs:
   email:
     runs-on: ubuntu-latest
