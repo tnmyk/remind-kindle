@@ -31,4 +31,4 @@ jobs:
             SENDER_APP_PASSWORD: ${{ secrets.SENDER_APP_PASSWORD }}
             RECEIVING_EMAIL: ${{ secrets.RECEIVING_EMAIL }}
             NO_OF_HIGHLIGHTS: ${{ secrets.NO_OF_HIGHLIGHTS }}
-        run: npm run dev
+        run: pnpm run start
