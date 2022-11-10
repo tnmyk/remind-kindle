@@ -1,4 +1,4 @@
-name: Daily Email
+name: Scheduled Email
 
 on:
   workflow_dispatch: {}
