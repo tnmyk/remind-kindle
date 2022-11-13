@@ -3,8 +3,8 @@ name: Scheduled Email
 on:
   workflow_dispatch: {}
   schedule:
-#   Runs every second hour.
-    - cron: '* */2 * * *'
+#   Runs at 04:00 UTC every day.
+    - cron: '0 4 * * *'
   
 jobs:
   email:

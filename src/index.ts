@@ -10,7 +10,7 @@ const run = async () => {
 
   const randomSlice = randomHighlightsSlice(
     allHighlights,
-    NO_OF_HIGHLIGHTS || 5
+    NO_OF_HIGHLIGHTS >= 0 ? NO_OF_HIGHLIGHTS : 5
   );
 
   await email(randomSlice);

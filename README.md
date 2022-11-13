@@ -1,6 +1,6 @@
 <h1 align="center" style="font-size: 10rem;">
 Remind Kindle 
-<img src="logo.svg" height="24px" />
+<img src="logo.png" height="24px" />
 </h1>
 
 Get reminder emails of your favorite kindle highlights *without sharing them with others* 📔🔖 with the help of Github Actions.

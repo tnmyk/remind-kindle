@@ -3,6 +3,8 @@ import { RECEIVING_EMAIL, SENDER_APP_PASSWORD, SENDER_EMAIL } from "./env";
 import { Highlight } from "./types";
 
 export const email = async (highlights: Highlight[]) => {
+  if (highlights.length == 0) return console.log("No highlights to send.");
+
   let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -16,6 +18,7 @@ export const email = async (highlights: Highlight[]) => {
     subject: "📔🔖 Kindle Highlights", // Subject line
     html: generateHTML(highlights), // html body
   });
+  console.log("Email sent.");
 };
 
 // Generates HTML for the email.
