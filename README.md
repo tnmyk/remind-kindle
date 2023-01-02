@@ -16,7 +16,7 @@ Get reminder emails of your favorite kindle highlights *without sharing them wit
 5. Done.
 
 ## Available Options/Features
-- Change the mail frequency from [workflow file](./.github/workflows/main.yml).
+- Change the mail frequency or timing from [workflow file](./.github/workflows/main.yml#L7).
 - Change number of highlights in the emails from repository's secret.
  
 ## Email Screenshot
