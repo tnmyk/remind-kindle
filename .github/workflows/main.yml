@@ -3,7 +3,7 @@ name: Scheduled Email
 on:
   workflow_dispatch: {}
   schedule:
-#   Runs at 04:00 UTC every day.
+#   Eg: Runs at 04:00 UTC every day.
     - cron: '0 4 * * *'
   
 jobs:
@@ -15,17 +15,19 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
       - name: Node LTS versions
         uses: actions/setup-node@v3
-          
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
           
       - name: Install Node.js dependencies
         run: |
-          npm i -g pnpm
-          pnpm i
+          pnpm i --no-frozen-lockfile
         
       - env:
             SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
